@@ -16,30 +16,22 @@ export const getGenerations = async () => {
     return results.generations;
 };
 
-export const getGenerationTalent = async () => {
+export const getGenerationsFromBranchExcept = async (
+    slug: string[] = [],
+    branchSlug: string = '',
+) => {
     const query = gql`
-        query GetGenerationTalent {
-            generations {
+        query GetGenerationsFromBranchExcept($slug: [String!], $branchSlug: String!) {
+            generations(where: { branch: { slug: $branchSlug }, slug_not_in: $slug }) {
                 name
                 slug
-                talents {
-                    name
-                    originalName
-                    socials {
-                        ... on Social {
-                            id
-                            link
-                            icon {
-                                url
-                            }
-                        }
-                    }
-                    arts
-                }
             }
         }
     `;
 
-    const results: GraphQLFetchResponse<Generation[]> = await request(graphqlAPI, query);
+    const results: GraphQLFetchResponse<Generation[]> = await request(graphqlAPI, query, {
+        slug,
+        branchSlug,
+    });
     return results.generations;
 };

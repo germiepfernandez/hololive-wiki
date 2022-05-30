@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Branch } from '../schema';
-import { getBranches } from '../services';
 import Image from 'next/image';
 
-import logo from '../public/hololive.png';
+import { Branch } from '../schema';
+import { getBranches } from '../services';
+import logo from '../public/hololive_logo.png';
 
 const Header = () => {
     const [branches, setBranches] = useState<Branch[]>([]);
@@ -29,7 +29,7 @@ const Header = () => {
                 </div>
                 <div className="hidden md:float-left md:contents">
                     {branches.map((cat) => (
-                        <Link key={cat.slug} href={`/${cat.slug}`}>
+                        <Link key={cat.slug} href={`/branch/${cat.slug}`}>
                             <span className="mt-4 ml-4 cursor-pointer align-middle text-lg font-semibold text-cyan-400 hover:border-b-2 hover:border-b-cyan-700 md:float-right">
                                 {cat.name}
                             </span>

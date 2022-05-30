@@ -1,4 +1,21 @@
-import { getBranches } from './branch';
-import { getGenerations, getGenerationTalent } from './generations';
+import { getBranches, getGenerationsFromBranch } from './branch';
+import { getGenerations, getGenerationsFromBranchExcept } from './generations';
+import {
+    getTalents,
+    getTalentDetail,
+    getTalentsFromGeneration,
+    getAdjacentTalent,
+    getRelatedTalents,
+} from './talent';
 
-export { getBranches, getGenerations, getGenerationTalent };
+export {
+    getBranches,
+    getGenerationsFromBranch,
+    getGenerations,
+    getGenerationsFromBranchExcept,
+    getTalents,
+    getTalentDetail,
+    getTalentsFromGeneration,
+    getAdjacentTalent,
+    getRelatedTalents,
+};

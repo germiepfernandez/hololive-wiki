@@ -22,7 +22,7 @@ body {
         left: 0;
         top: 0;
         z-index: -1;
-        background-position: 50% 50%;
+        background-position: 50% 100%;
         background-repeat: no-repeat;
         background-size: cover;
     }
@@ -48,6 +48,8 @@ body {
 }
 
 .react-multi-carousel-list {
+    justify-content: center;
+
     & .arrow-btn {
         transition: width 300ms ease;
         width: 50px;
@@ -64,4 +66,84 @@ a {
 
 * {
     box-sizing: border-box;
+}
+
+.loader {
+    border-top-color: #3498db;
+    -webkit-animation: spinner 1.5s linear infinite;
+    animation: spinner 1.5s linear infinite;
+}
+
+@-webkit-keyframes spinner {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+// gen-0
+.sora {
+    background-color: rgb(36 94 255);
+}
+.suisei {
+    background-color: rgb(80 229 249);
+}
+.roboco {
+    background-color: rgb(163 102 148);
+}
+.miko {
+    background-color: rgb(255 156 180);
+}
+.azki {
+    background-color: rgb(244 52 139);
+}
+
+// gen-1
+.mel {
+    background-color: rgb(255 221 23);
+}
+.aki {
+    background-color: rgb(255 28 154);
+}
+.haachama {
+    background-color: rgb(252 18 63);
+}
+.fubuki {
+    background-color: rgb(118 223 255);
+}
+.matsuri {
+    background-color: rgb(255 162 39);
+}
+
+// gen-2
+.ayame {
+    background-color: rgb(237 58 79);
+}
+
+// gen-5
+.kanata {
+    background-color: rgb(153 216 255);
+}
+.watame {
+    background-color: rgb(254 242 158);
+}
+.towa {
+    background-color: rgb(202 186 255);
+}
+.luna {
+    background-color: rgb(254 132 194);
+}
+.coco {
+    background-color: rgb(254 139 4);
 }

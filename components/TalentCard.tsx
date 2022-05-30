@@ -3,20 +3,40 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Talent } from '../schema';
-import { images } from '../contants';
 
 interface Props {
     talent: Talent;
+    type: 'gen-page' | 'gen-section';
 }
 
-const TalentCard = ({ talent }: Props) => {
+const list = [
+    'Pavolia Reine',
+    'Kureiji Ollie',
+    'Hakos Baelz',
+    'Ceres Fauna',
+    'La+ Darknesss',
+    'Minato Aqua',
+    'Ookami Mio',
+    'Nekomata Okayu',
+    'Mano Aloe',
+];
+
+const TalentCard = ({ talent, type }: Props) => {
+    const bgSize = list.findIndex((e: string) => e === talent.name) === -1 ? 'cover' : 'contain';
+
     return (
-        <div className="relative h-72">
+        <div className="relative h-96">
             <div
-                className="absolute inline-block h-72 w-full rounded-lg bg-cover bg-center bg-no-repeat shadow-md"
-                style={{ backgroundImage: `url('/arts/${talent.arts[0]}')` }}
+                className="absolute inline-block h-96 w-full rounded-lg bg-contain bg-center bg-no-repeat shadow-md lg:bg-cover"
+                style={{
+                    backgroundImage: `url('/character/${talent.icon}')`,
+                    backgroundSize: type === 'gen-page' ? 'contain' : bgSize,
+                }}
             />
-            <div className="absolute h-72 w-full rounded-lg bg-gradient-to-b from-gray-400 via-gray-700 to-black bg-center opacity-50" />
+            <div
+                style={{ backgroundColor: talent.color }}
+                className="absolute -z-[1] h-96 w-full rounded-lg  bg-gradient-to-b from-gray-400 via-gray-800 bg-center opacity-50"
+            />
             <div className="absolute flex h-full w-full flex-col items-center justify-center rounded-lg p-4">
                 <p className="text-shadow mb-4 text-center text-2xl font-semibold text-white">
                     {talent.name}
@@ -44,7 +64,7 @@ const TalentCard = ({ talent }: Props) => {
                     ))}
                 </div>
             </div>
-            <Link href={`/post/${talent.slug}`}>
+            <Link href={`/idol/${talent.slug}`}>
                 <span className="absolute z-10 h-full w-full cursor-pointer" />
             </Link>
         </div>

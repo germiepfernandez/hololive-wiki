@@ -15,3 +15,39 @@ export const getBranches = async () => {
     const results: GraphQLFetchResponse<Branch[]> = await request(graphqlAPI, query);
     return results.branches;
 };
+
+export const getGenerationsFromBranch = async (slug: string | string[]) => {
+    const query = gql`
+        query GetBranches($slug: String!) {
+            branch(where: { slug: $slug }) {
+                name
+                slug
+                generations {
+                    name
+                    slug
+                    talents {
+                        name
+                        originalName
+                        slug
+                        color
+                        icon
+                        arts
+                        socials {
+                            ... on Social {
+                                id
+                                link
+                                icon {
+                                    url
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    `;
+
+    const results: GraphQLFetchResponse<Branch> = await request(graphqlAPI, query, { slug });
+    return results.branch;
+};
+
